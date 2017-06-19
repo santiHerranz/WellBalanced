@@ -1,5 +1,9 @@
+
+
+
 #include <iostream>
 #include <stack>
+#include "cua_amb_2_piles.h"
 
 using namespace std;
 
@@ -57,37 +61,66 @@ void BinaryRepresentationOfNumber(int number){
 
 }
 
-void multipop() {
 
+
+
+
+
+char* PopKElements(stack<char> pila, int count) {
+
+    char* str = (char *) malloc(count+1 * sizeof(char));
+
+    for (int i = 0; i < count ; ++i) {
+        str[i] = pila.top();
+        pila.pop();
+    }
+    str +='\0';
+
+    return str;
 
 }
 
 
+
+
+
+
 int main() {
 
-    std::cout << "Check Well balanced expression" << std::endl;
-
-    wellBalancedExpresion("");
-    wellBalancedExpresion("[]");
-    wellBalancedExpresion("[a]");
-    wellBalancedExpresion("[(())]");
-
-    wellBalancedExpresion(")");
-    wellBalancedExpresion("[");
-    wellBalancedExpresion("[)");
-    wellBalancedExpresion(")]");
-    wellBalancedExpresion("[((])");
-    wellBalancedExpresion("[[((])]");
-
-
-    std::cout << "Binary Representation Of a Number" << std::endl;
+    std::cout << "***Binary Representation Of a Number" << std::endl;
 
     BinaryRepresentationOfNumber(5);
     BinaryRepresentationOfNumber(31);
     BinaryRepresentationOfNumber(64);
 
 
+
+    std::cout << "\n\n***Pop K Elements\n" << std::endl;
+
+    stack<char> pila;
+
+    pila.push('t');
+    pila.push('a');
+    pila.push('t');
+    pila.push('i');
+    pila.push('s');
+    pila.push('r');
+    pila.push('e');
+    pila.push('v');
+    pila.push('i');
+    pila.push('n');
+    pila.push('U');
+
+    char* result = PopKElements(pila, 7);
+    std::cout << "result: " << result <<"\n\n" << std::endl;
+
+
+
+    std::cout << "\n\n***Queue Using Two Stacks" << std::endl;
+    queueUsingTwoStacks();
+
     return EXIT_SUCCESS;
 }
+
 
 
